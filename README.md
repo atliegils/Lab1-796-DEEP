@@ -170,7 +170,7 @@ del model  # deletes the existing model
 loaded_model = load_model('my_model.h5')
 ```
 
-## Task 7 - Evaluate Model
+## Task 8 - Evaluate Model
 
 ```python
 score = loaded_model.evaluate(x_test, y_test, verbose=0)
