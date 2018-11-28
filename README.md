@@ -5,7 +5,9 @@ Reykjavik University
 ## Setup Environment [TODO]
 To start things off, you will need to create a Notebook on your Google Drive. You can do this through the [Colab website](http://colab.research.google.com) 
 
-Once there, you can paste the URL to this repository (https://github.com/atliegils/Lab1-796-DEEP) and pull the file to your Drive.
+Once there, you can select GitHub, paste the URL to this repository (https://github.com/atliegils/Lab1-796-DEEP) and pull the file to your Drive.
+
+This notebook will be opened in a playground mode, so you will have to save a copy to your Drive or changes may be lost!
 
 For improved performance, you should toggle the GPU accelerator.
 
