@@ -1,4 +1,4 @@
-![alt text](https://www.ru.is/skin/basic9k/i/sitelogo.svg =500x "Reykjavik University Logo")
+![](https://www.ru.is/skin/basic9k/i/sitelogo.svg)
 
 LAB 1
 ---
