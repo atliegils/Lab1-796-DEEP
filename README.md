@@ -2,7 +2,7 @@
 Deep Learning [SC-T-796-DEEP] 
 Reykjavik University
 
-## Setup Environment [TODO]
+## Setup Environment
 To start things off, you will need to create a Notebook on your Google Drive. You can do this through the [Colab website](http://colab.research.google.com) 
 
 Once there, you can select GitHub, paste the URL to this repository (https://github.com/atliegils/Lab1-796-DEEP) and pull the file to your Drive.
@@ -54,5 +54,8 @@ Keep trained version in a file
 
 Load a trained model from a file
 
-### Evaluate Model
+### Task 7 - Evaluate Model
 Measure the accuracy of your model
+
+### Task 8 - Predict a number on picture
+Download the picture from this repository and predict its class using the model.
