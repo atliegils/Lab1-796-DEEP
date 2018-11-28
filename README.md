@@ -1,18 +1,19 @@
 ![alt text](https://www.ru.is/skin/basic9k/i/sitelogo.svg =500x "Reykjavik University Logo")
 
-LAB 1
+# LAB 1
+
 ---
 
 T-796-DEEP, Introduction to Deep Learning, 2018-3
 
 ---
 
-## Setup Environment
-To start things off, you will need to create a Notebook on your Google Drive. You can do this through the [Colab website](http://colab.research.google.com) 
+## Task 0 - Setup Environment
+Start by  creating a Notebook on your Google Drive. You do this through the [Colab website](http://colab.research.google.com) 
 
-Once there, you can select GitHub, paste the URL to this repository (https://github.com/atliegils/Lab1-796-DEEP) and pull the file to your Drive.
+Once there, you can select GitHub tab, then paste the following URL:  (https://github.com/atliegils/Lab1-796-DEEP) and open the notebook in a seperate virtual enviroment assigned to your google account.
 
-This notebook will be opened in a playground mode, so you will have to save a copy to your Drive or changes may be lost!
+**This notebook will be opened in a playground mode, so you will have to save a copy to your Drive or changes may be lost!**
 
 For improved performance, you should toggle the GPU accelerator.
 
@@ -20,11 +21,11 @@ For improved performance, you should toggle the GPU accelerator.
 
 A lot of keyboard shortcuts are available and save time `Tools` -> `Keyboard Shortcuts` 
 
-Now, that the environment is set up, we can start creating the model. 
+Now, that the environment is set up, we can started. 
 
 For each of the following tasks, create a new section header cell in the notebook.
 
-### Task 1 - Import packages
+## Task 1 - Import packages
 ```python
 import sys
 from __future__ import print_function
@@ -46,20 +47,15 @@ Python: 3.6.7 (default, Oct 22 2018, 11:32:17)
 [GCC 8.2.0]
 ```
 
-## Data
+## Task 2 - Get Data
+
 We use the MNIST dataset to train our model
-
-
-
-### Task 2 - Get Data
-Load the dataset from MNIST
 
 ```python
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 ```
 
-### Task 3 - Data Preprocessing
-Split the data and convert the target to binary
+## Task 3 - Data Preprocessing
 
 ```python
 num_classes = 10
@@ -94,11 +90,7 @@ x_train shape: (60000, 28, 28, 1)
 10000 test samples
 ```
 
-## Model 
-What architecture should look like
-
-
-### Task 4 - Create Model
+## Task 4 - Create Model
 Construct the model using Keras
 
 ```python
@@ -122,28 +114,63 @@ model.compile(loss=keras.losses.categorical_crossentropy,
               metrics=['accuracy'])
 ```
 
-### Task 5 - Train Model
-Use the preprocessed data to train the model
+## Task 5 - Train Model
+Use the preprocessed data to train the model.
+
+Notice the speed difference using `GPU` or `TPU`  acceleration.
 
 ```python
+model.fit(x_train, y_train,
+          batch_size=batch_size,
+          epochs=epochs,
+          verbose=1,
+          validation_data=(x_test, y_test))
+```
+Output:
+```
+Train on 60000 samples, validate on 10000 samples
+Epoch 1/12
+60000/60000 [==============================] - 11s 181us/step - loss: 0.2695 - acc: 0.9178 - val_loss: 0.0550 - val_acc: 0.9824
+Epoch 2/12
+60000/60000 [==============================] - 9s 149us/step - loss: 0.0878 - acc: 0.9740 - val_loss: 0.0367 - val_acc: 0.9883
+Epoch 3/12
+60000/60000 [==============================] - 9s 149us/step - loss: 0.0656 - acc: 0.9807 - val_loss: 0.0328 - val_acc: 0.9892
+Epoch 4/12
+60000/60000 [==============================] - 9s 150us/step - loss: 0.0548 - acc: 0.9836 - val_loss: 0.0311 - val_acc: 0.9890
+Epoch 5/12
+60000/60000 [==============================] - 9s 150us/step - loss: 0.0476 - acc: 0.9854 - val_loss: 0.0293 - val_acc: 0.9899
+Epoch 6/12
+60000/60000 [==============================] - 9s 149us/step - loss: 0.0422 - acc: 0.9868 - val_loss: 0.0289 - val_acc: 0.9906
+Epoch 7/12
+60000/60000 [==============================] - 9s 149us/step - loss: 0.0369 - acc: 0.9889 - val_loss: 0.0290 - val_acc: 0.9908
+Epoch 8/12
+60000/60000 [==============================] - 9s 149us/step - loss: 0.0334 - acc: 0.9895 - val_loss: 0.0271 - val_acc: 0.9910
+Epoch 9/12
+60000/60000 [==============================] - 9s 149us/step - loss: 0.0330 - acc: 0.9896 - val_loss: 0.0337 - val_acc: 0.9891
+Epoch 10/12
+60000/60000 [==============================] - 9s 150us/step - loss: 0.0300 - acc: 0.9907 - val_loss: 0.0279 - val_acc: 0.9914
+Epoch 11/12
+60000/60000 [==============================] - 9s 150us/step - loss: 0.0277 - acc: 0.9911 - val_loss: 0.0266 - val_acc: 0.9920
+Epoch 12/12
+60000/60000 [==============================] - 9s 151us/step - loss: 0.0274 - acc: 0.9918 - val_loss: 0.0296 - val_acc: 0.9912
+<keras.callbacks.History at 0x7f9aa51d9198>
 ```
 
-### Task 6 - Save / Load Model
-Save current model to a __.h5__ file
+## Task 6 - Save Model
+Save current model to a __.h5__ file.   
 
 ```python
 model.save('my_model.h5')
 del model  # deletes the existing model
 ```
 
-Load the model from a file
+## Task 7 - Load Model
 
 ```python
 loaded_model = load_model('my_model.h5')
 ```
 
-### Task 7 - Evaluate Model
-Measure the accuracy of your model
+## Task 7 - Evaluate Model
 
 ```python
 score = loaded_model.evaluate(x_test, y_test, verbose=0)
